@@ -48,37 +48,38 @@
     <div class="container is-max-desktop">
       <div class="columns is-centered">
         <div class="column has-text-centered">
-          <h1 class="title is-1 publication-title">ITEM3D: Directional Texture Editing for 3D Models</h1>
+          <h1 class="title is-1 publication-title">HyperStyle3D: Text-Guided 3D Portrait Stylization via Hypernetworks</h1>
           <div class="is-size-5 publication-authors">
             <span class="author-block">
-              Shengqi Liu<sup>1*</sup>,</span>
+              Zhuo Chen<sup>1</sup>,</span>
             <span class="author-block">
-              Zhuo Chen<sup>1*</sup>,</span>
+              Xudong Xu<sup>2</sup>,</span>
             <span class="author-block">
-              Jingnan Gao<sup>1</sup>,
+              Yicaho Yan<sup>1</sup>,
             </span>
             <span class="author-block">
-              <a>Yicaho Yan</a><sup>1</sup>,
+              Zhengqin Xu<sup>1</sup>,
+            </span>
+            <span class="author-block">
+              Ye Pan<sup>1</sup>,
             </span>
             <span class="author-block">
               Wenhan Zhu<sup>1</sup>,
             </span>
             <span class="author-block">
-              Ke Gao<sup>2</sup>
+              Wayne Wu<sup>2</sup>
             </span>
             <span class="author-block">
-              Jiangjing Lyu<sup>2</sup>,
+              Bo Dai<sup>2</sup>,
             </span>
             <span class="author-block">
-              <a>Xiaokang Yang</a><sup>1</sup>
+              Xiaokang Yang<sup>1</sup>
             </span>
           </div>
 
           <div class="is-size-5 publication-authors">
-            <span class="footnote"><sup>*</sup>Equal contribution</span>
-            <p>
             <span class="author-block"><sup>1</sup>MoE Key Lab of Artificial Intelligence, Shanghai Jiao Tong University,</span>
-            <span class="author-block"><sup>2</sup> Alibaba Group</span>
+            <span class="author-block"><sup>2</sup>Shanghai AI Laboratory</span>
           </div>
 
           <div class="column has-text-centered">
@@ -94,7 +95,7 @@
                 </a>
               </span>
               <span class="link-block">
-                <a href="https://arxiv.org/abs/2309.14872"
+                <a href="https://arxiv.org/abs/2304.09463"
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
                       <i class="ai ai-arxiv"></i>
@@ -114,7 +115,7 @@
               </span> -->
               <!-- Code Link. -->
               <span class="link-block">
-                <a href="https://github.com/shengqiliu1/ITEM3D"
+                <a href="https://github.com/windlikestone/HyperStyle3D"
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
                       <i class="fab fa-github"></i>
@@ -123,14 +124,14 @@
                   </a>
               </span>
               <!-- Dataset Link. -->
-              <span class="link-block">
+              <!-- <span class="link-block">
                 <a href="https://g-1nonly.github.io/EvaSurf-Website/"
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
                       <i class="far fa-images"></i>
                   </span>
                   <span>Data (Coming Soon)</span>
-                  </a>
+                  </a> -->
             </div>
 
           </div>
@@ -173,7 +174,7 @@
             deforming scene using photos/videos captured casually from mobile phones.
           </p> -->
           <p>
-            Texture editing is a crucial task in 3D modeling that allows users to automatically manipulate the surface materials of 3D models. However, the inherent complexity of 3D models and the ambiguous text description lead to the challenge in this task. To address this challenge, we propose <strong>ITEM3D</strong>, a <strong>T</strong>exture <strong>E</strong>diting <strong>M</strong>odel designed for automatic <strong>3D</strong> object editing according to the text <strong>I</strong>nstructions. Leveraging the diffusion models and the differentiable rendering, ITEM3D takes the rendered images as the bridge of text and 3D representation, and further optimizes the disentangled texture and environment map. Previous methods adopted the absolute editing direction namely score distillation sampling (SDS) as the optimization objective, which unfortunately results in the noisy appearance and text inconsistency. To solve the problem caused by the ambiguous text, we introduce a relative editing direction, an optimization objective defined by the noise difference between the source and target texts, to release the semantic ambiguity between the texts and images. Additionally, we gradually adjust the direction during optimization to further address the unexpected deviation in the texture domain. Qualitative and quantitative experiments show that our ITEM3D outperforms the state-of-the-art methods on various 3D objects. We also perform text-guided relighting to show explicit control over lighting.
+            Portrait stylization is a long-standing task enabling extensive applications. Although 2D-based methods have made great progress in recent years, real-world applications such as metaverse and games often demand 3D content. On the other hand, the requirement of 3D data, which is costly to acquire, significantly impedes the development of 3D portrait stylization methods. In this paper, inspired by the success of 3D-aware GANs that bridge 2D and 3D domains with 3D fields as the intermediate representation for rendering 2D images, we propose a novel method, dubbed HyperStyle3D, based on 3D-aware GANs for 3D portrait stylization. At the core of our method is a hyper-network learned to manipulate the parameters of the generator in a single forward pass. It not only offers a strong capacity to handle multiple styles with a single model, but also enables flexible fine-grained stylization that affects only texture, shape, or local part of the portrait. While the use of 3D-aware GANs bypasses the requirement of 3D data, we further alleviate the necessity of style images with the CLIP model being the stylization guidance. We conduct an extensive set of experiments across the style, attribute, and shape, and meanwhile, measure the 3D consistency. These experiments demonstrate the superior capability of our HyperStyle3D model in rendering 3D-consistent images in diverse styles, deforming the face shape, and editing various attributes.
           </p>
           <!-- p>
             We show that <span class="dnerf">Nerfies</span> can turn casually captured selfie
@@ -217,14 +218,15 @@
     <div class="columns is-centered has-text-justified">
       <div class="column">
             <p>
-            <b>Pipeline of 3D model editing.</b> We render the 3D model with mesh, texture, and environment map into 2D images which are then added with noise ϵ. We further separately use the target text and the gradually adjusted source text as the conditions to predict the added noise via the U-Net. The difference between the two predicted noises serve as the relative direction to guide the optimization of the materials and environment map.
+            The overview of our full-pipeline. (a) Our hyper-module consists of three trainable hyper-networks and a fixed text encoder. The text prompts of three levels (shape, attribute, and style) are encoded into the coarse, medium, and fine direction features, which are then fed into the corresponding hyper-network. The hyper-networks predict three groups of parameter offsets for the coarse, medium, and fine layers in the pre-trained 3D-aware generator. (b) Our hyper-module is trained under the supervision of CLIP loss and ID loss. Text prompts of three levels are simultaneously integrated into the training, empowering the hyper-module to handle the overlying manipulation of diverse styles, attributes, and shapes. We pre-define the source text as a description related to the current training target text, such as “Face” to “Bearded face”
             </p>
             <!-- <video poster="" id="chair-tp" autoplay controls muted loop playsinline height="100%">
               <source src="./static/video/method.mp4"
                     type="video/mp4">
             </video> -->
              <br>
-            <img src="./static/images/pipeline_2.png" alt="Pulpit rock" width="2050" height="534">
+            <img src="./static/images/inference_pipeline_final.png" alt="Pulpit rock" width="2050" height="534">
+            <img src="./static/images/training_pipeline_final.png" alt="Pulpit rock" width="2050" height="534">
             
 
       </div>
