@@ -1,15 +1,20 @@
 # Nerfies
 
-This is the repository that contains source code for the [Nerfies website](https://nerfies.github.io).
+This is the repository that contains the project code for the [HyperStyle3D website](https://windlikestone.github.io/HyperStyle3D-website/).
 
-If you find Nerfies useful for your work please cite:
+If you find HyperStyle3D useful for your work please cite:
 ```
-@article{park2021nerfies
-  author    = {Park, Keunhong and Sinha, Utkarsh and Barron, Jonathan T. and Bouaziz, Sofien and Goldman, Dan B and Seitz, Steven M. and Martin-Brualla, Ricardo},
-  title     = {Nerfies: Deformable Neural Radiance Fields},
-  journal   = {ICCV},
-  year      = {2021},
-}
+@ARTICLE{10542240,
+  author={Chen, Zhuo and Xu, Xudong and Yan, Yichao and Pan, Ye and Zhu, Wenhan and Wu, Wayne and Dai, Bo and Yang, Xiaokang},
+  journal={IEEE Transactions on Circuits and Systems for Video Technology}, 
+  title={HyperStyle3D: Text-Guided 3D Portrait Stylization via Hypernetworks}, 
+  year={2024},
+  volume={},
+  number={},
+  pages={1-1},
+  keywords={Three-dimensional displays;Shape;Generators;Solid modeling;Semantics;Deformation;Deformable models;3D-aware GAN;Style Transfer;Hyper-network},
+  doi={10.1109/TCSVT.2024.3407135}}
+
 ```
 
 # Website License
